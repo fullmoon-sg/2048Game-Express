@@ -1,0 +1,28 @@
+{
+  "name": "2048game-express",
+  "version": "1.0.0",
+  "description": "<img src=\"https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png\" style=\"margin: 0;\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullmoon-sg/2048Game-Express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fullmoon-sg/2048Game-Express/issues"
+  },
+  "homepage": "https://github.com/fullmoon-sg/2048Game-Express#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "handlebars-helpers": "^0.10.0",
+    "hbs": "^4.1.1",
+    "mongodb": "^3.6.3",
+    "wax-on": "^1.2.2"
+  }
+}
