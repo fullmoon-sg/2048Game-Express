@@ -8,8 +8,10 @@ require('dotenv').config();
 const app = express();
 app.use(cors())
 
+
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}))
+app.use(express.json())
 
 async function main(){
 
@@ -21,8 +23,26 @@ app.get('/', async (req,res) => {
     let hall_of_fame = await db.collection('Hall_of_Fame').find().toArray();
     res.json(hall_of_fame)
 })
-}
 
+app.post('/', async(req,res) => {
+    let {name,score} = req.body;
+    let results = await db.collection('Hall_of_Fame').insertOne({name,score});
+    res.send({'insertid':results.insertid})
+})
+
+
+app.get('/add', async (req,res) => {
+    let playersRecord = await db.collection('Players_Record').find().toArray();
+    res.json(playersRecord)
+})
+
+app.post('/add', async(req,res) => {
+    let {name,password} = req.body;
+    let results = await db.collection('Players_Record').insertOne({name,password});
+    res.send({'insertid':results.insertid})
+})
+
+}// end of main
 main();
 
 app.listen(3000, () => {
