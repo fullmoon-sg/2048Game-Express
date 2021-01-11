@@ -42,9 +42,29 @@ app.post('/add', async(req,res) => {
     res.send({'insertid':results.insertid})
 })
 
+app.delete('/:id', async (req,res) => {
+    let db=MongoUtil.getDB();
+    await db.collection('Hall_of_Fame').deleteOne({
+        _id: ObjectId(req.params.id)
+    })
+    res.send({
+        'status' :'OK'
+    })
+})
+
+app.delete('/add/:id', async (req,res) => {
+    let db=MongoUtil.getDB();
+    await db.collection('Players_Record').deleteOne({
+        _id: ObjectId(req.params.id)
+    })
+    res.send({
+        'status' :'OK'
+    })
+})
+
 }// end of main
 main();
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Express is running")
 })
